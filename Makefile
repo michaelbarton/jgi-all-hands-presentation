@@ -16,17 +16,27 @@ out/slides.pdf: tmp/ordered
 		-format pdf \
 		/input/$@
 
-tmp/ordered: tmp/pngs
+tmp/ordered: data/slide_order.txt tmp/png tmp/jpg
+	mkdir -p $@
+	cat $< \
+		| parallel \
+		  --col-sep "\t" \
+		  "cp tmp/{1}/{2}.{1} $@/{#}.{1}"
+	ls tmp/ordered \
+		| awk -F . '{ printf("tmp/ordered/%s tmp/ordered/%03d.%s\n", $$0, $$1, $$NF) }' \
+		| xargs -n2 mv
+
+
+tmp/jpg: tmp/image.png
 	mkdir -p $@
 	find ~/Dropbox/slides/*.jpg \
 		| parallel  "convert -gravity center -resize $(dimensions) {} $@/{/.}.jpg"
-	cat data/slide_order.txt \
-		| parallel --col-sep , "convert -resize $(dimensions) $</{1}.png $@/{2}.png"
 
-tmp/pngs: tmp/image.png
+tmp/png: tmp/image.png
 	mkdir -p $@
 	$(docker) convert \
 		-crop "1x40@" \
+		-resize $(dimensions) \
 		/input/$< \
 		/input/$@/$(PERCENT)03d.png
 

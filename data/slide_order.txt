@@ -1,9 +1,51 @@
-000,001
-001,003
-002,005
-003,006
-004,007
-005,009
-006,010
-009,014
-007,017
+png	000	Introduction slide
+jpg	002	Picture of bristol
+png	001	Moving from bristol to canterbury
+jpg	004	Picture of canterbury
+png	002	Headset
+png	003	Venn diagram
+jpg	008_a	Picture of BRI
+jpg	008_b	Picture of me in BRI
+png	004	Blender
+png	005	Moving to Newcastle and Manchester
+png	006	Moving to Ohio
+jpg	012	Working in a cave in Ohio
+png	009	Rugby ball and American Flag
+jpg	016_a	Rubgy picture
+jpg	016_b	Rubgy picture
+jpg	016_c	Rubgy picture
+jpg	016_d	Rubgy picture
+png	007 	Moving to California
+jpg	022_a	After bicycle accident
+jpg	022_b	Missing teeth
+jpg	024	After surfing accident
+png	010	QAQC group Diagram
+png	011
+png	012
+png	013
+png	014
+png	015
+png	016
+png	017
+png	018
+png	019
+png	020
+png	021
+png	022
+png	023
+png	024
+png	025
+png	026
+png	027
+png	028
+png	029
+png	030
+png	031
+png	032
+png	033
+png	034
+png	035
+png	036
+png	037
+png	038
+png	039
