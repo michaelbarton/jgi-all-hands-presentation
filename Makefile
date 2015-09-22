@@ -12,12 +12,14 @@ out/slides.pdf: tmp/ordered
 		-page $(dimensions) \
 		/input/$</* \
                 -gravity center \
+		-extent $(dimensions) \
 		-format pdf \
 		/input/$@
 
 tmp/ordered: tmp/pngs
 	mkdir -p $@
-	cp ~/Dropbox/slides/* $@
+	find ~/Dropbox/slides/*.jpg \
+		| parallel  "convert -gravity center -resize $(dimensions) {} $@/{/.}.jpg"
 	cat data/slide_order.txt \
 		| parallel --col-sep , "convert -resize $(dimensions) $</{1}.png $@/{2}.png"
 
