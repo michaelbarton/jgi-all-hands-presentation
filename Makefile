@@ -8,13 +8,13 @@ all: out/slides.pdf
 
 out/slides.pdf: tmp/ordered
 	mkdir -p $(dir $@)
-	$(docker) convert \
+	convert \
 		-page $(dimensions) \
-		/input/$</* \
+		$</* \
                 -gravity center \
 		-extent $(dimensions) \
 		-format pdf \
-		/input/$@
+		$@
 
 tmp/ordered: data/slide_order.txt tmp/png tmp/jpg
 	mkdir -p $@
@@ -32,13 +32,18 @@ tmp/jpg: tmp/image.png
 	find ~/Dropbox/slides/*.jpg \
 		| parallel  "convert -gravity center -resize $(dimensions) {} $@/{/.}.jpg"
 
-tmp/png: tmp/image.png
+tmp/png: tmp/cropped
 	mkdir -p $@
-	$(docker) convert \
+	find $</* \
+		| parallel "convert -resize $(dimensions) {} $@/{/.}.png"
+
+tmp/cropped: tmp/image.png
+	mkdir -p $@
+	convert \
 		-crop "1x40@" \
 		-resize $(dimensions) \
-		/input/$< \
-		/input/$@/$(PERCENT)03d.png
+		$< \
+		$@/$(PERCENT)03d.png
 
 tmp/image.png: src/slides.svg
 	$(docker) inkscape \
