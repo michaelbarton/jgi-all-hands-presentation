@@ -2,23 +2,31 @@ name   = builder
 docker = docker run --volume=$(shell pwd):/input:rw $(name)
 
 PERCENT    := %
-dimensions := "4000x3000"
+dimensions := "2000x1500"
 
 all: out/slides.pdf
 
-out/slides.pdf: tmp/pngs
+out/slides.pdf: tmp/ordered
 	mkdir -p $(dir $@)
 	$(docker) convert \
 		-page $(dimensions) \
-		/input/$</slide_*.png \
+		/input/$</* \
+                -gravity center \
+		-format pdf \
 		/input/$@
+
+tmp/ordered: tmp/pngs
+	mkdir -p $@
+	cp ~/Dropbox/slides/* $@
+	cat data/slide_order.txt \
+		| parallel --col-sep , "convert -resize $(dimensions) $</{1}.png $@/{2}.png"
 
 tmp/pngs: tmp/image.png
 	mkdir -p $@
 	$(docker) convert \
-		-crop $(dimensions) \
+		-crop "1x40@" \
 		/input/$< \
-		/input/$@/slide_$(PERCENT)03d.png
+		/input/$@/$(PERCENT)03d.png
 
 tmp/image.png: src/slides.svg
 	$(docker) inkscape \
@@ -41,4 +49,4 @@ bootstrap: .image
 	touch $@
 
 clean:
-	rm -f tmp/* out/*
+	rm -rf tmp/* out/*
