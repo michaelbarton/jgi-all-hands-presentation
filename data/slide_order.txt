@@ -22,13 +22,13 @@ jpg	bike	Picture of folding bicycle
 jpg	hospital	In hospital
 jpg	helmet	Smashed helmet
 jpg	022_b	Picture with Oscar
-jpg	helmet	Smashed helmet
 jpg	surfing	Me lying on beach after surfing
 jpg	024	After surfing accident
+jpg	eddy	Picture of eddy
 png	011	Part 2
 png	012	QAQC group Diagram
+jpg	group	QAQC group
 png	013
-png	006	Blender
 png	014
 png	015
 png	016
