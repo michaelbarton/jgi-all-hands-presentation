@@ -17,6 +17,7 @@ out/slides.pdf: tmp/ordered
 		$@
 
 tmp/ordered: data/slide_order.txt tmp/png tmp/jpg
+	rm -rf $@
 	mkdir -p $@
 	cat $< \
 		| parallel \
@@ -40,7 +41,7 @@ tmp/png: tmp/cropped
 tmp/cropped: tmp/image.png
 	mkdir -p $@
 	convert \
-		-crop "1x40@" \
+		-crop "1x50@" \
 		-resize $(dimensions) \
 		$< \
 		$@/$(PERCENT)03d.png
