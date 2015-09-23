@@ -22,14 +22,13 @@ jpg	bike	Picture of folding bicycle
 jpg	hospital	In hospital
 jpg	helmet	Smashed helmet
 jpg	022_b	Picture with Oscar
-jpg	onesie	Smile with tooth missing
-jpg	onesie	Smile again
+jpg	helmet	Smashed helmet
 jpg	surfing	Me lying on beach after surfing
 jpg	024	After surfing accident
 png	011	Part 2
 png	012	QAQC group Diagram
-png	012
 png	013
+png	006	Blender
 png	014
 png	015
 png	016
@@ -56,3 +55,9 @@ png	036
 png	037
 png	038
 png	039
+png	040
+png	041
+png	042
+png	043
+png	044
+png	045
